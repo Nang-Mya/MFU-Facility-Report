@@ -13,7 +13,6 @@ interface AppContextType {
   role: UserRole | null;
   issues: Issue[];
   loginAsStudent: (studentId: string, password: string) => void;
-  signupStudent: (studentId: string, password: string, dorm: string) => void;
   loginAsAdmin: () => void;
   logout: () => void;
   addIssue: (issue: Issue) => void;
@@ -81,26 +80,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("role", "student");
   }, []);
 
-  const signupStudent = useCallback((studentId: string, password: string, dorm: string) => {
-    // Load existing accounts
-    const saved = localStorage.getItem("students");
-    const accounts: Record<string, string> = saved ? JSON.parse(saved) : {};
-
-    // Save/overwrite account
-    accounts[studentId] = password;
-    localStorage.setItem("students", JSON.stringify(accounts));
-
-    // Save dorm preference
-    localStorage.setItem(`student_${studentId}_dorm`, dorm);
-
-    // Auto-login after signup
-    try {
-      loginAsStudentWithPassword(studentId, password);
-    } catch (e) {
-      console.error("Auto-login failed after signup:", e);
-    }
-  }, [loginAsStudentWithPassword]);
-
   const loginAsAdmin = useCallback(() => {
     setUser(null);
     setRole("admin");
@@ -142,7 +121,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         role,
         issues,
         loginAsStudent: loginAsStudentWithPassword,
-        signupStudent,
         loginAsAdmin,
         logout,
         addIssue,

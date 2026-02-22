@@ -1,6 +1,5 @@
 import { AppProvider, useApp } from "@/context/AppContext";
 import { LoginPage } from "@/pages/LoginPage";
-import { SignupPage } from "@/pages/SignupPage";
 import { StudentHome } from "@/pages/StudentHome";
 import { ReportIssuePage } from "@/pages/ReportIssuePage";
 import { MyIssuesPage } from "@/pages/MyIssuesPage";
@@ -12,9 +11,6 @@ function AppContent() {
   const { role, currentView } = useApp();
 
   if (!role) {
-    if (currentView === "signup") {
-      return <SignupPage />;
-    }
     return <LoginPage />;
   }
 

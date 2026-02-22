@@ -218,13 +218,7 @@ export function LoginPage() {
 
       <div className="text-center px-4 md:px-8 py-4 md:py-6">
         <p className="text-xs md:text-sm text-muted-foreground">
-          First time? Need to register your dorm?{" "}
-          <button
-            onClick={() => setCurrentView("signup")}
-            className="text-primary font-semibold hover:underline transition"
-          >
-            Sign up here
-          </button>
+          Use your student ID and school portal password to log in.
         </p>
       </div>
 
