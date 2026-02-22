@@ -1,5 +1,6 @@
 import { LogOut, Shield, Bell } from "lucide-react";
 import { useApp } from "@/context/AppContext";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function AppHeader() {
   const { user, role, logout, currentView } = useApp();
@@ -33,6 +34,7 @@ export function AppHeader() {
               <p className="text-sm md:text-base font-semibold">{user.building}</p>
             </div>
           )}
+          <ThemeToggle />
           <button
             onClick={logout}
             className="p-2 rounded-full hover:bg-primary-foreground/10 transition-colors"

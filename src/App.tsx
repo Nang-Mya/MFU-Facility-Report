@@ -1,4 +1,5 @@
 import { AppProvider, useApp } from "@/context/AppContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import { LoginPage } from "@/pages/LoginPage";
 import { StudentHome } from "@/pages/StudentHome";
 import { ReportIssuePage } from "@/pages/ReportIssuePage";
@@ -28,8 +29,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <AppProvider>
-      <AppContent />
-    </AppProvider>
+    <ThemeProvider>
+      <AppProvider>
+        <AppContent />
+      </AppProvider>
+    </ThemeProvider>
   );
 }

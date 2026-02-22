@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useApp } from "@/context/AppContext";
 import { Shield, GraduationCap, Eye, EyeOff } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 // Mock student credentials for testing
 const MOCK_STUDENTS = {
@@ -58,7 +59,10 @@ export function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* Header Banner */}
-      <div className="header-gradient px-6 md:px-8 pt-16 md:pt-24 pb-10 md:pb-16 text-primary-foreground text-center">
+      <div className="header-gradient px-6 md:px-8 pt-16 md:pt-24 pb-10 md:pb-16 text-primary-foreground text-center relative">
+        <div className="absolute top-6 right-6">
+          <ThemeToggle />
+        </div>
         <div className="w-16 h-16 md:w-20 md:h-20 bg-gold rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-lg">
           <span className="text-2xl md:text-3xl font-bold text-gold-foreground">MFU</span>
         </div>
@@ -147,20 +151,6 @@ export function LoginPage() {
                 >
                   Sign In as Student
                 </button>
-
-                <div className="bg-muted rounded-xl p-3 md:p-4 space-y-1 md:space-y-2">
-                  <p className="text-xs md:text-sm font-semibold text-muted-foreground">Test Credentials:</p>
-                  <div className="space-y-1 md:space-y-1.5 text-xs md:text-sm">
-                    <div className="font-mono text-primary">
-                      <p>ID: 6730123456</p>
-                      <p>PW: student123</p>
-                    </div>
-                    <div className="font-mono text-primary">
-                      <p>ID: 6510987654</p>
-                      <p>PW: student123</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             ) : (
               <div className="space-y-4 md:space-y-5">
